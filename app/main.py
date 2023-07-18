@@ -18,8 +18,25 @@ users_repository = UsersRepository()
 def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/signup")
+def signup( request : Request ):
+    return templates.TemplateResponse (
+        "sign.html",
+        {
+            "request" : request
+        }
+    )
 
-# ваше решение сюда
-
-
-# конец решения
+@app.post("/signup")
+def sign( request : request,
+    email : str = Form() , 
+    fullname : str = Form() , 
+    password : str = Form() 
+     ):
+    new_user = {
+        "email" : email,
+        "fullname" : fullname,
+        "password" : password
+    }
+    users_repository.add( new_user )
+    return RedirectResponse( "/login" , status_code = 303 )

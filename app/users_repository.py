@@ -5,6 +5,7 @@ from attrs import define
 class User:
     email: str
     full_name: str
+    password: str
     id: int = 0
 
 
@@ -13,7 +14,11 @@ class UsersRepository:
 
     def __init__(self):
         self.users = []
-
-    # необходимые методы сюда
-
-    # конец решения
+    
+    def add( self , user ):
+        new = User
+        new.email = user["email"]
+        new.full_name = user["fullname"]
+        new.password = user["password"]
+        new.id = len( self.users ) + 1
+        users.append( new )
