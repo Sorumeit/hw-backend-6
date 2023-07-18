@@ -28,7 +28,7 @@ def signup( request : Request ):
     )
 
 @app.post("/signup")
-def sign( request : request,
+def sign( request : Request,
     email : str = Form() , 
     fullname : str = Form() , 
     password : str = Form() 
