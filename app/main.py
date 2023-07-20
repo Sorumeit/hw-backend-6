@@ -62,7 +62,7 @@ def log( request : Request ):
 
 
 @app.post("/login")
-def login( request : Request ,
+def login( request : Request , response : Response,
           email : str = Form(),
           password : str = Form() ):
     ans = users_repository.check( email , password )
@@ -86,4 +86,5 @@ def profile( request : Request,
             "user" : user
         }
     )
+
 
