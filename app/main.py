@@ -1,3 +1,4 @@
+import json
 from fastapi import Cookie, FastAPI, Form, Request, Response, templating
 from fastapi.responses import RedirectResponse
 
@@ -110,3 +111,17 @@ def flower( request : Request ,
     }
     flowers_repository.add( new )
     return RedirectResponse( "/flowers" , status_code = 303 )
+
+@app.get( "/cart/items" )
+def add( response : Response,
+        flower_id : str = "",
+         cart : str = Cookie( default = "[]" ) ):
+    cart_json = json.loads( cart )
+    if ( flower_id != "" ):
+        cart_json.append( flower_id )
+        new_cart = json.dumps( cart_json )
+        response.set_cookie( key = "cart" , value = new_cart )
+    return {
+        "cart" : cart
+    }
+    
