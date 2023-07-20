@@ -113,15 +113,22 @@ def flower( request : Request ,
     return RedirectResponse( "/flowers" , status_code = 303 )
 
 @app.get( "/cart/items" )
-def add( response : Response,
-        flower_id : str = "",
+def add( request : Request , cart : str = Cookie( default = "[]" ) ):
+    cart_json = json.loads( cart )
+    return templates.TemplateResponse(
+        "cart.html",
+        {
+            "request" : request,
+            "cart" : cart_json
+        }
+    )
+
+def add1( response : Response ,
+        flower_id : int = Form() ,
          cart : str = Cookie( default = "[]" ) ):
     cart_json = json.loads( cart )
-    if ( flower_id != "" ):
-        cart_json.append( flower_id )
-        new_cart = json.dumps( cart_json )
-        response.set_cookie( key = "cart" , value = new_cart )
-    return {
-        "cart" : cart_json
-    }
+    cart_json.append( flower_id )
+    new_cart = json.dumps( cart_json )
+    response = RedirectResponse( "/flowers" , status_code = 303 )
+    response.set_cookie( key = "cart" , value = new_cart )
     

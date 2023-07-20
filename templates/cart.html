@@ -1,0 +1,17 @@
+<form action="/cart/items" method="post">
+    <div>
+        <label>
+            <input type="text" name = "flower_id" />
+        </label>
+    </div>
+    <input type = "submit" value = "Add">
+</form>
+<body>
+    {% for item in cart %}
+        <tr>
+            <td>
+                <p>{{ item }}</p>
+            </td>
+        </tr>
+    {% endfor %}
+</body>
