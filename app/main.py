@@ -16,13 +16,13 @@ purchases_repository = PurchasesRepository()
 users_repository = UsersRepository()
 
 def create( user_id : int ) -> str:
-    user = { "used_id" : user_id }
+    user = { "user_id" : user_id }
     token = jwt.encode( user , "nfactorial" , "HS256" )
     return token
 
 def decode( token : str ) -> int:
     data = jwt.decode( token , "nfactorial" , "HS256" )
-    return data
+    return data["user_id"]
 
 @app.get("/")
 def root(request: Request):
