@@ -21,7 +21,7 @@ def root(request: Request):
 @app.get("/signup")
 def signup( request : Request ):
     return templates.TemplateResponse (
-        "sign.html",
+        "/signup/sign.html",
         {
             "request" : request
         }
