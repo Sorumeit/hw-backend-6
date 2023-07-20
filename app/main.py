@@ -53,7 +53,7 @@ def sign( request : Request,
 
 @app.get("/login")
 def log( request : Request ):
-    return templates.TemplateReponse(
+    return templates.TemplateResponse(
         "login.html",
         {
             "request" : request
