@@ -22,7 +22,7 @@ def create( user_id : int ) -> str:
 
 def decode( token : str ) -> int:
     data = jwt.decode( token , "nfactorial" , "HS256" )
-    return data["user_id"]
+    return data
 
 @app.get("/")
 def root(request: Request):
