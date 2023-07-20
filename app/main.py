@@ -123,6 +123,7 @@ def add( request : Request , cart : str = Cookie( default = "[]" ) ):
         }
     )
 
+@app.post( "/cart/items" )
 def add1( response : Response ,
         flower_id : int = Form() ,
          cart : str = Cookie( default = "[]" ) ):
