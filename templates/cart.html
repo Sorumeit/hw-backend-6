@@ -1,12 +1,10 @@
-<form action="/cart/items" method="post">
+<body>
     <div>
         <label>
             <input type="text" name = "flower_id" />
         </label>
     </div>
     <input type = "submit" value = "Add">
-</form>
-<body>
     {% for item in cart %}
         <tr>
             <td>
