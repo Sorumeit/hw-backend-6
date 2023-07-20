@@ -21,4 +21,4 @@ class UsersRepository:
         new.full_name = user["fullname"]
         new.password = user["password"]
         new.id = len( self.users ) + 1
-        users.append( new )
+        self.users.append( new )
