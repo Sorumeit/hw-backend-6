@@ -122,6 +122,6 @@ def add( response : Response,
         new_cart = json.dumps( cart_json )
         response.set_cookie( key = "cart" , value = new_cart )
     return {
-        "cart" : cart
+        "cart" : cart_json
     }
     
