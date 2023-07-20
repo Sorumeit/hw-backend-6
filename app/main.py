@@ -45,7 +45,7 @@ def sign( request : Request,
      ):
     new_user = {
         "email" : email,
-        "fullname" : fullname,
+        "fullname" : full_name,
         "password" : password
     }
     users_repository.add( new_user )
