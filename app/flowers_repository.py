@@ -14,7 +14,11 @@ class FlowersRepository:
 
     def __init__(self):
         self.flowers = []
-
-    # необходимые методы сюда
-
-    # конец решения
+    
+    def add( self , flower ):
+        new_flower = Flower
+        new_flower.cost = flower["price"]
+        new_flower.name = flower["name"]
+        new_flower.count = flower["count"]
+        new_flower.id = len( self.flowers ) + 1
+        self.flowers.append( new_flower )

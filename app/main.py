@@ -41,7 +41,7 @@ def signup( request : Request ):
 def sign( request : Request,
     email : str = Form() , 
     fullname : str = Form() , 
-    password : str = Form() 
+    password : str = Form() , 
      ):
     new_user = {
         "email" : email,
@@ -87,4 +87,26 @@ def profile( request : Request,
         }
     )
 
+@app.get( "/flowers" )
+def flow( request : Request ):
+    return templates.TemplateResponse(
+        "lst.html",
+        {
+            "request" : request,
+            "flowers" : flowers_repository.flowers
+        }
+    )
 
+
+@app.post( "/flowers" )
+def flower( request : Request , 
+           name : str = Form(),
+            count : int = Form(),
+             price : int = Form() ):
+    new = {
+        "name" : name,
+        "count" : count,
+        "price" : price,
+    }
+    flowers_repository.add( new )
+    return RedirectResponse( "/flowers" , status_code = 303 )
