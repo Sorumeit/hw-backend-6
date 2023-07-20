@@ -102,11 +102,11 @@ def flow( request : Request ):
 def flower( request : Request , 
            name : str = Form(),
             count : int = Form(),
-             price : int = Form() ):
+             cost : int = Form() ):
     new = {
         "name" : name,
         "count" : count,
-        "price" : price,
+        "price" : cost,
     }
     flowers_repository.add( new )
     return RedirectResponse( "/flowers" , status_code = 303 )
