@@ -70,7 +70,7 @@ def login( request : Request ,
         return RedirectResponse ( "/login" , status_code = 303 )
     response = RedirectResponse( "/profile" , status_code = 303 )
     token = create( ans )
-    response.set_cookies( "token" , token )
+    response.set_cookie( "token" , token )
     return response
 
 @app.get( "/profile" )
