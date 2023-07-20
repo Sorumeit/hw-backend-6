@@ -132,4 +132,5 @@ def add1( response : Response ,
     new_cart = json.dumps( cart_json )
     response = RedirectResponse( "/flowers" , status_code = 303 )
     response.set_cookie( key = "cart" , value = new_cart )
+    return response
     
